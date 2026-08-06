@@ -58,43 +58,54 @@
 
         @media screen { #print-area { display: none !important; } }
         @media print {
-            @page { size: A4 portrait; margin: 12mm 15mm; }
+            @page { size: A4 portrait; margin: 12mm 10mm; }
             * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-            html, body { background: #fff !important; color: #000 !important; height: auto !important; overflow: visible !important; font-family: 'Noto Sans KR', sans-serif; }
+            html, body { background: #ffffff !important; font-size: 10pt; color: #1e293b !important; height: auto !important; overflow: visible !important; font-family: 'Noto Sans KR', sans-serif; }
+            a[href]:after { content: none !important; }
             header, footer, section:not(#print-area), .no-print, #toast, #custom-confirm, #phrase-modal { display: none !important; }
             main, body { padding: 0 !important; margin: 0 !important; width: 100% !important; background: #fff !important; }
-            #print-area { display: block !important; width: 100%; box-sizing: border-box; }
-            .print-header-top { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid var(--tm); padding-bottom: 6px; margin-bottom: 12px; }
-            .print-header-top img { height: 26px; }
-            .print-doc-no { font-size: 9px; color: #555; font-weight: bold; }
-            .print-title { text-align: center; font-size: 18px; font-weight: 900; color: var(--tm); margin-bottom: 4px; line-height: 1.4; letter-spacing: -0.03em; }
-            .print-subtitle { text-align: center; font-size: 10px; color: #475569; margin: 0 0 10px 0; font-weight: 500; }
-            .print-overview { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px; background: #f8fafc !important; border: 1px solid #cbd5e1 !important; border-radius: 4px; padding: 10px 14px; margin-bottom: 12px; font-size: 10.5px; }
-            .print-overview .label { font-weight: 800; color: var(--tm); margin-right: 4px; }
-            .tm-table { width: 100%; border-collapse: collapse; font-size: 10px; table-layout: fixed; border: 1.5px solid #1e293b !important; }
-            .tm-table th { border: 1px solid #1e293b !important; background: #f1f5f9 !important; font-weight: bold; text-align: center; padding: 6px 4px !important; font-size: 10.5px; color: var(--tm); }
-            .tm-table td { border: 1px solid #1e293b !important; padding: 8px 10px !important; vertical-align: top; word-break: keep-all; line-height: 1.45; font-size: 10px; }
-            .tm-table tbody tr { page-break-inside: avoid; break-inside: avoid; }
-            .tm-col-date { width: 11%; text-align: center; font-weight: 700; background: #f8fafc !important; vertical-align: middle; line-height: 1.5; }
-            .tm-col-desc { width: 75%; }
-            .tm-col-meal { width: 14%; text-align: center; vertical-align: middle; }
-            .tm-day-divider td { border-top: 1.5px solid #1e293b !important; }
-            .tm-time-flow { font-size: 10px !important; margin-bottom: 5px !important; font-weight: bold; }
-            .tm-time-tag { color: var(--tm); margin-right: 4px; }
-            .tm-highlight { font-weight: 700; color: var(--tm); }
-            .tm-desc-list { list-style: none; margin: 4px 0 !important; padding-left: 2px; }
-            .tm-desc-list li { position: relative; padding-left: 10px; margin-bottom: 4px !important; }
-            .tm-desc-list li::before { content: '■'; font-size: 7px; position: absolute; left: 0; top: 3.5px; color: var(--tm); }
-            .tm-hotel-divider { border: 0; border-top: 1px dashed #94a3b8; margin: 6px 0 4px 0; }
-            .tm-hotel-info { font-size: 9px !important; font-weight: bold; color: #334155; }
-            .tm-meal-wrapper { display: flex; flex-direction: column; gap: 5px; text-align: left; padding-left: 2px; }
-            .tm-meal-simple { display: flex; align-items: flex-start; font-size: 9.5px !important; line-height: 1.4; }
-            .tm-meal-simple strong { color: var(--tm); margin-right: 4px; width: 14px; flex-shrink: 0; }
-            .print-contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 20px; padding: 8px 10px; background: #f8fafc !important; border: 1px solid #cbd5e1 !important; border-radius: 4px; font-size: 10px; margin-top: 10px; margin-bottom: 8px; }
-            .print-contacts .pc-role { font-weight: 700; color: var(--tm); margin-right: 4px; }
-            .print-credit { margin-top: 10px; padding-top: 8px; border-top: 1px solid #cbd5e1; text-align: center; }
-            .print-credit-text { font-size: 9px; color: #475569; font-weight: 500; }
+            #print-area { display: block !important; width: 100%; color: #1e293b; font-family: 'Noto Sans KR', sans-serif; }
+            .print-page-container { width: 100%; margin: 0; padding: 0; }
+            .print-header { display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 2px solid #004098; padding-bottom: 8px; margin-bottom: 12px; }
+            .print-header .logo img { height: 32px; object-fit: contain; }
+            .print-header .doc-info { text-align: right; font-size: 11px; color: #475569; }
+            .print-title-section { text-align: center; margin-bottom: 12px; }
+            .print-title-section h1 { font-size: 18px; font-weight: 700; color: #0f172a; letter-spacing: -0.5px; margin:0; }
+            .print-overview-slim {
+                display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 6px 14px;
+                background-color: #f8fafc; border: 1px solid #94a3b8; border-radius: 6px;
+                padding: 8px 12px; margin-bottom: 12px; font-size: 12px; word-break: keep-all;
+            }
+            .print-overview-item { display: flex; gap: 8px; align-items: flex-start; min-width: 0; }
+            .print-overview-item.print-overview-wide { grid-column: 1 / -1; }
+            .print-overview-slim .label { font-weight: 700; color: #004098; white-space: nowrap; flex-shrink: 0; }
+            .print-overview-slim .value { line-height: 1.45; }
+            .print-nowrap { white-space: nowrap; }
+            .print-table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 11.5px; table-layout: fixed; border: 2px solid #1e293b; }
+            .print-table th, .print-table td { border: 1px solid #1e293b; padding: 5px 7px; vertical-align: top; page-break-inside: avoid; word-break: keep-all; }
+            .print-table th { background-color: #f8fafc !important; color: #1e293b; font-weight: 700; text-align: center; font-size: 12px; border-bottom: 2px solid #1e293b; }
+            .print-col-date { width: 10%; text-align: center; font-weight: 700; vertical-align: middle; background-color: #f8fafc; }
+            .print-col-desc { width: 75%; }
+            .print-col-meal { width: 15%; text-align: center; vertical-align: middle; padding-left: 4px; padding-right: 4px; }
+            .print-day-divider td { border-top: 2px solid #1e293b !important; }
+            .print-time-flow { margin-bottom: 3px; font-weight: 500; font-size: 11.5px; }
+            .print-time-tag { display: inline-block; color: #004098; font-weight: 700; margin-right: 5px; width: 38px; }
+            .print-highlight { font-weight: 700; color: #004098; }
+            .print-desc-list { list-style: none; margin: 3px 0 6px 0; padding-left: 5px; font-size: 11.5px; }
+            .print-desc-list li { position: relative; padding-left: 12px; margin-bottom: 2px; line-height: 1.35; }
+            .print-desc-list li::before { content: '■'; font-size: 8px; position: absolute; left: 0; top: 3px; color: #004098; }
+            .print-hotel-divider { border: 0; border-top: 1px dashed #94a3b8; margin: 6px 0 4px 0; }
+            .print-hotel-info { font-size: 11.5px; color: #0f172a; font-weight:700; }
+            .print-meal-wrapper { display: flex; flex-direction: column; gap: 5px; justify-content: center; height: 100%; text-align: left; padding-left: 2px; }
+            .print-meal-simple { display: flex; align-items: flex-start; line-height: 1.3; font-size: 11px; gap: 2px; }
+            .print-meal-simple strong { color: #004098; margin-right: 2px; width: 14px; flex-shrink: 0; white-space: nowrap; }
+            .print-meal-menu { display: block; word-break: break-all; line-height: 1.35; }
+            .print-remarks { font-size: 10.5px; color: #475569; text-align: right; font-weight: 500; margin-bottom: 8px; }
+            .print-footer-box { margin-top: 8px; padding-top: 8px; border-top: 1px solid #e2e8f0; display: flex; justify-content: flex-end; align-items: center; }
+            .print-manager-info { text-align: left; border-left: 3px solid #004098; padding-left: 10px; }
+            .print-manager-info .names { color: #0f172a; font-weight: 700; font-size: 12px; }
         }
+
     </style>
 </head>
 <body class="antialiased pb-20 md:pb-0 relative">
@@ -122,138 +133,190 @@
     </header>
 
     <main>
-        <!-- A4 Print -->
+        
+        <!-- A4 Print (Changbaishan quality: checklist + QR) -->
         <div id="print-area">
-            <div class="print-header-top">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="Tourmaker">
-                <div class="print-doc-no">문서번호: TM-20270306-HN18</div>
-            </div>
-            <div class="print-title">[단독] 하이난 해구·삼아(관광·휴양) 4박5일 VIP 일정표</div>
-            <p class="print-subtitle">※ 본 일정표는 안내 초안이며, 현지 기상·교통 및 항공·열차 스케줄에 따라 유연하게 진행됩니다.</p>
-            <div class="print-overview">
-                <div><span class="label">일정</span> 2027.03.06(토) ~ 03.10(수)</div>
-                <div><span class="label">인원</span> 부부동반 9쌍 18명(+1) 단독</div>
-                <div><span class="label">항공</span> 하이난항공 (HU)</div>
-                <div><span class="label">이동</span> 해구↔삼아 고속열차</div>
-                <div><span class="label">조건</span> 노쇼핑 / 노옵션 / 팁포함</div>
-            </div>
-            <table class="tm-table">
-                <thead><tr><th class="tm-col-date">일자/지역</th><th class="tm-col-desc">상세 일정 및 관광지</th><th class="tm-col-meal">식사/숙박</th></tr></thead>
-                <tbody>
-                    <tr class="tm-day-divider">
-                        <td class="tm-col-date">1일차<br><span class="text-[9px] text-slate-500 font-normal">3/6(토)</span><br><br>인천<br>해구</td>
-                        <td class="tm-col-desc">
-                            <div class="tm-time-flow"><span class="tm-time-tag">야간</span> 인천 출발 → 해구 도착</div>
-                            <ul class="tm-desc-list">
-                                <li><strong>[21:40]</strong> 하이난항공(HU450) 인천 국제공항 출발</li>
-                                <li><strong>[01:30+1]</strong> 해구미란 국제공항 도착 및 입국수속, 가이드 미팅</li>
-                                <li>리조트로 이동 후 호텔 투숙 및 휴식</li>
-                            </ul>
-                            <hr class="tm-hotel-divider"><div class="tm-hotel-info">🏨 하이커우 풀만 호텔 또는 동급</div>
-                        </td>
-                        <td class="tm-col-meal">
-                            <div class="tm-meal-wrapper">
-                                <div class="tm-meal-simple"><strong>조</strong> 불포함</div>
-                                <div class="tm-meal-simple"><strong>중</strong> 불포함</div>
-                                <div class="tm-meal-simple"><strong>석</strong> 기내식</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="tm-day-divider">
-                        <td class="tm-col-date">2일차<br><span class="text-[9px] text-slate-500 font-normal">3/7(일)</span><br><br>해구<br>삼아</td>
-                        <td class="tm-col-desc">
-                            <div class="tm-time-flow"><span class="tm-time-tag">전일</span> 고속열차 이동 · 남산문화원 · 천고정쇼</div>
-                            <ul class="tm-desc-list">
-                                <li>호텔 조식 후 열차역 이동</li>
-                                <li><strong>[10:00–11:49 예정]</strong> 고속열차 C7309 해구 → 삼아 (2등석)</li>
-                                <li>하이난 <strong>남산문화원 풍경구 남산사</strong> (코끼리열차 포함)</li>
-                                <li>남산문화원 <strong>대소동천</strong> (전동카 포함)</li>
-                                <li class="tm-highlight">송성그룹 <strong>천고정쇼(로맨스파크)</strong> 일반석 관람</li>
-                                <li>호텔 투숙 및 휴식</li>
-                            </ul>
-                            <hr class="tm-hotel-divider"><div class="tm-hotel-info">🏨 삼아만 맹글로브 리조트 퀸스테이다워 또는 동급</div>
-                        </td>
-                        <td class="tm-col-meal">
-                            <div class="tm-meal-wrapper">
-                                <div class="tm-meal-simple"><strong>조</strong> 호텔식</div>
-                                <div class="tm-meal-simple"><strong>중</strong> 현지식</div>
-                                <div class="tm-meal-simple"><strong>석</strong> <span class="tm-highlight">샤브무제한</span></div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="tm-day-divider">
-                        <td class="tm-col-date">3일차<br><span class="text-[9px] text-slate-500 font-normal">3/8(월)</span><br><br>삼아</td>
-                        <td class="tm-col-desc">
-                            <div class="tm-time-flow"><span class="tm-time-tag">전일</span> 리조트 휴양 · 원숭이섬 · 일월만 · 녹회두 야경</div>
-                            <ul class="tm-desc-list">
-                                <li>호텔 조식 후 오전 <strong>부대시설 이용 및 자유시간</strong></li>
-                                <li>원숭이들의 천국 <strong>원숭이섬</strong> (케이블카 탑승)</li>
-                                <li>서핑 성지 <strong>일월만 비치 + Bar 스트리트</strong></li>
-                                <li class="tm-highlight">싼야시내를 내려다보는 <strong>녹회두 야경투어</strong> (전동카 포함)</li>
-                                <li>호텔 투숙 및 휴식</li>
-                            </ul>
-                            <hr class="tm-hotel-divider"><div class="tm-hotel-info">🏨 상동 (삼아만 맹글로브 연박)</div>
-                        </td>
-                        <td class="tm-col-meal">
-                            <div class="tm-meal-wrapper">
-                                <div class="tm-meal-simple"><strong>조</strong> 호텔식</div>
-                                <div class="tm-meal-simple"><strong>중</strong> 현지식</div>
-                                <div class="tm-meal-simple"><strong>석</strong> 현지식</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="tm-day-divider">
-                        <td class="tm-col-date">4일차<br><span class="text-[9px] text-slate-500 font-normal">3/9(화)</span><br><br>삼아</td>
-                        <td class="tm-col-desc">
-                            <div class="tm-time-flow"><span class="tm-time-tag">전일</span> 천애해각 · 푸싱제 · 전신마사지</div>
-                            <ul class="tm-desc-list">
-                                <li>호텔 조식 후 오전 <strong>부대시설 이용 및 자유시간</strong></li>
-                                <li>절경의 남천일주 <strong>천애해각</strong> (전동카 포함)</li>
-                                <li>싼야 최대 번화가 · 여행자 거리 <strong>푸싱제</strong></li>
-                                <li class="tm-highlight">여행의 피로를 푸는 <strong>전신마사지 90분</strong> (매너팁 별도)</li>
-                                <li>호텔 투숙 및 휴식</li>
-                            </ul>
-                            <hr class="tm-hotel-divider"><div class="tm-hotel-info">🏨 상동 (삼아만 맹글로브 연박)</div>
-                        </td>
-                        <td class="tm-col-meal">
-                            <div class="tm-meal-wrapper">
-                                <div class="tm-meal-simple"><strong>조</strong> 호텔식</div>
-                                <div class="tm-meal-simple"><strong>중</strong> 현지식</div>
-                                <div class="tm-meal-simple"><strong>석</strong> 현지식</div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="tm-day-divider">
-                        <td class="tm-col-date">5일차<br><span class="text-[9px] text-slate-500 font-normal">3/10(수)</span><br><br>삼아<br>인천</td>
-                        <td class="tm-col-desc">
-                            <div class="tm-time-flow"><span class="tm-time-tag">오전</span> 열차 귀환 · 해구 출발 · 인천 도착</div>
-                            <ul class="tm-desc-list">
-                                <li>호텔 조식 후 열차역 이동</li>
-                                <li>고속열차 <strong>C7314</strong> 삼아 → 해구</li>
-                                <li>중식 후 공항 이동 · 출국 수속</li>
-                                <li>하이난항공(<strong>HU449</strong>) 해구 출발 / 인천 도착 및 해산</li>
-                                <li>※ 귀국 항공 시각은 그룹좌석 확정 후 최종 안내</li>
-                            </ul>
-                        </td>
-                        <td class="tm-col-meal">
-                            <div class="tm-meal-wrapper">
-                                <div class="tm-meal-simple"><strong>조</strong> 호텔식</div>
-                                <div class="tm-meal-simple"><strong>중</strong> 현지식</div>
-                                <div class="tm-meal-simple"><strong>석</strong> 기내식</div>
-                            </div>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="print-contacts">
-                <span><span class="pc-role">한국총괄</span> 정두영 이사 010-3841-1634</span>
-                <span><span class="pc-role">현지담당</span> 가이드 미정</span>
-                <span><span class="pc-role">영사콜센터</span> +82-2-3210-0404</span>
-            </div>
-            <div class="print-credit">
-                <p class="print-credit-text">[System Powered by TOURMAKER] 본 스마트 가이드북은 고객님의 기획과 <strong>투어메이커</strong>의 트래블 테크 기술 제휴로 제작되었습니다.</p>
+            <div class="print-page-container">
+                <div class="print-header">
+                    <div class="logo">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHfgIX70O5k6Anuo0UgALIdaG9jSga9auHu3uyz0uEirylGPAJnjN_qQbvEGMUvPqUQf_g9FMNUHRxlDcUBf4vZ3Mpy4TnA9WxbmzWYK11gt2zuy_Irl4wctNFjcjLyPo0GPXV792o_J7L9guRMuDfeC1gy7USwywjYbECZgzcsHybuGRRAXAnO1eNmP8/s320/logo.png" alt="투어메이커 로고">
+                    </div>
+                    <div class="doc-info">문서번호: TM-20270306-HN18</div>
+                </div>
+
+                <div class="print-title-section">
+                    <h1>부부동반 하이난 해구·삼아(관광·휴양) 4박5일 단독투어</h1>
+                </div>
+
+                <div class="print-overview-slim">
+                    <div class="print-overview-item">
+                        <span class="label">행사기간</span>
+                        <span class="value"><span class="print-nowrap">2027. 03. 06 (토) ~ 03. 10 (수)</span></span>
+                    </div>
+                    <div class="print-overview-item">
+                        <span class="label">이용항공</span>
+                        <span class="value"><span class="print-nowrap">하이난항공 (HU450/HU449)</span></span>
+                    </div>
+                    <div class="print-overview-item print-overview-wide">
+                        <span class="label">행사조건</span>
+                        <span class="value"><span class="print-nowrap">부부동반 9쌍 18명(+1) 단독</span> <span class="print-nowrap">(노쇼핑 / 노옵션 / 팁포함)</span> / 해구↔삼아 고속열차</span>
+                    </div>
+                    <div class="print-overview-item print-overview-wide">
+                        <span class="label">한국담당</span>
+                        <span class="value">이재명 대표 010-9443-7881 · 현지 가이드 미정</span>
+                    </div>
+                </div>
+
+                <table class="print-table">
+                    <thead>
+                        <tr>
+                            <th class="print-col-date">일자</th>
+                            <th class="print-col-desc">상세 탐방 일정 및 동선 점검</th>
+                            <th class="print-col-meal">식사</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="print-day-divider">
+                            <td class="print-col-date"><strong class="print-nowrap">1일차</strong><br><span class="print-nowrap">3/6 (토)</span></td>
+                            <td class="print-col-desc">
+                                <div class="print-time-flow"><span class="print-time-tag">21:40</span> 인천 국제공항 출발 (HU450)</div>
+                                <div class="print-time-flow"><span class="print-time-tag">01:30</span> 해구미란 도착(+1) · 가이드 미팅 · 리조트 이동</div>
+                                <ul class="print-desc-list">
+                                    <li>야간 출국 후 새벽 도착, <span class="print-highlight">호텔 투숙 및 휴식</span></li>
+                                </ul>
+                                <hr class="print-hotel-divider">
+                                <div class="print-hotel-info">🏨 호텔 : 하이커우 풀만 호텔 또는 동급</div>
+                            </td>
+                            <td class="print-col-meal">
+                                <div class="print-meal-wrapper">
+                                    <div class="print-meal-simple"><strong>조:</strong><div class="print-meal-menu">-</div></div>
+                                    <div class="print-meal-simple"><strong>중:</strong><div class="print-meal-menu">-</div></div>
+                                    <div class="print-meal-simple"><strong>석:</strong><div class="print-meal-menu">기내식</div></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="print-day-divider">
+                            <td class="print-col-date"><strong class="print-nowrap">2일차</strong><br><span class="print-nowrap">3/7 (일)</span></td>
+                            <td class="print-col-desc">
+                                <div class="print-time-flow"><span class="print-time-tag">오전</span> 조식 후 고속열차 C7309 해구→삼아 (2등석 · 10:00–11:49 예정)</div>
+                                <ul class="print-desc-list">
+                                    <li>남산문화원 <span class="print-highlight">남산사</span> (코끼리열차 포함)</li>
+                                    <li>남산문화원 <span class="print-highlight">대소동천</span> (전동카 포함)</li>
+                                    <li><span style="font-weight:700;color:#004098;">★ 송성 천고정쇼(로맨스파크) 일반석 관람</span></li>
+                                    <li>호텔 투숙 및 휴식</li>
+                                </ul>
+                                <hr class="print-hotel-divider">
+                                <div class="print-hotel-info">🏨 호텔 : 삼아만 맹글로브 리조트 퀸스테이다워 또는 동급</div>
+                            </td>
+                            <td class="print-col-meal">
+                                <div class="print-meal-wrapper">
+                                    <div class="print-meal-simple"><strong>조:</strong><div class="print-meal-menu">호텔식</div></div>
+                                    <div class="print-meal-simple"><strong>중:</strong><div class="print-meal-menu">현지식</div></div>
+                                    <div class="print-meal-simple"><strong>석:</strong><div class="print-meal-menu">샤브<br>무제한</div></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="print-day-divider">
+                            <td class="print-col-date"><strong class="print-nowrap">3일차</strong><br><span class="print-nowrap">3/8 (월)</span></td>
+                            <td class="print-col-desc">
+                                <div class="print-time-flow"><span class="print-time-tag">오전</span> 리조트 부대시설 이용 및 자유시간</div>
+                                <ul class="print-desc-list">
+                                    <li><span class="print-highlight">원숭이섬</span> (케이블카 포함)</li>
+                                    <li>서핑 성지 <span class="print-highlight">일월만 비치 + Bar 스트리트</span></li>
+                                    <li><span style="font-weight:700;color:#004098;">★ 녹회두 야경투어 (전동카 포함)</span></li>
+                                    <li>호텔 투숙 및 휴식</li>
+                                </ul>
+                                <hr class="print-hotel-divider">
+                                <div class="print-hotel-info">🏨 호텔 : 삼아만 맹글로브 리조트 (연박)</div>
+                            </td>
+                            <td class="print-col-meal">
+                                <div class="print-meal-wrapper">
+                                    <div class="print-meal-simple"><strong>조:</strong><div class="print-meal-menu">호텔식</div></div>
+                                    <div class="print-meal-simple"><strong>중:</strong><div class="print-meal-menu">현지식</div></div>
+                                    <div class="print-meal-simple"><strong>석:</strong><div class="print-meal-menu">현지식</div></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="print-day-divider">
+                            <td class="print-col-date"><strong class="print-nowrap">4일차</strong><br><span class="print-nowrap">3/9 (화)</span></td>
+                            <td class="print-col-desc">
+                                <div class="print-time-flow"><span class="print-time-tag">오전</span> 리조트 부대시설 이용 및 자유시간</div>
+                                <ul class="print-desc-list">
+                                    <li>남천일주 절경 <span class="print-highlight">천애해각</span> (전동카 포함)</li>
+                                    <li>싼야 번화가 · 여행자 거리 <span class="print-highlight">푸싱제</span></li>
+                                    <li><span style="font-weight:700;color:#004098;">★ 전신마사지 90분</span> ※매너팁 별도</li>
+                                    <li>호텔 투숙 및 휴식</li>
+                                </ul>
+                                <hr class="print-hotel-divider">
+                                <div class="print-hotel-info">🏨 호텔 : 삼아만 맹글로브 리조트 (연박)</div>
+                            </td>
+                            <td class="print-col-meal">
+                                <div class="print-meal-wrapper">
+                                    <div class="print-meal-simple"><strong>조:</strong><div class="print-meal-menu">호텔식</div></div>
+                                    <div class="print-meal-simple"><strong>중:</strong><div class="print-meal-menu">현지식</div></div>
+                                    <div class="print-meal-simple"><strong>석:</strong><div class="print-meal-menu">현지식</div></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="print-day-divider">
+                            <td class="print-col-date"><strong class="print-nowrap">5일차</strong><br><span class="print-nowrap">3/10 (수)</span></td>
+                            <td class="print-col-desc">
+                                <div class="print-time-flow"><span class="print-time-tag">오전</span> 조식·체크아웃 후 고속열차 C7314 삼아→해구</div>
+                                <ul class="print-desc-list">
+                                    <li>중식 후 공항 이동 · 출국 수속</li>
+                                    <li>하이난항공 <span class="print-highlight">HU449</span> 해구 출발 / 인천 도착 후 해산</li>
+                                    <li>※ 귀국 항공 시각은 그룹좌석 확정 후 최종 안내</li>
+                                </ul>
+                            </td>
+                            <td class="print-col-meal">
+                                <div class="print-meal-wrapper">
+                                    <div class="print-meal-simple"><strong>조:</strong><div class="print-meal-menu">호텔식</div></div>
+                                    <div class="print-meal-simple"><strong>중:</strong><div class="print-meal-menu">현지식</div></div>
+                                    <div class="print-meal-simple"><strong>석:</strong><div class="print-meal-menu">기내식</div></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="print-remarks">
+                    ※ 본 일정표는 안내 초안이며, 항공·열차·현지 사정에 따라 변동될 수 있습니다.<br>
+                    ※ 전 일정 노쇼핑 / 노옵션 · 여권 유효기간 6개월 이상 필요
+                </div>
+
+                <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 12px; background: #fff; page-break-inside: avoid;">
+                    <div style="font-weight: 800; color: #0f172a; font-size: 13px; margin-bottom: 8px;">✅ 출발 전 준비물 체크리스트</div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 16px; font-size: 11px; color: #334155;">
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 여권 (만료일 6개월 이상) + 사본/사진</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 항공권 E-Ticket &amp; 일정표 (인쇄/캡처)</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 편한 운동화 · 샌들 · 수영복</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 자외선 차단제 · 모자 · 선글라스</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 얇은 겉옷 · 접이식 우산</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 위안화(CNY) 일부 + 해외겸용 카드</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 보조배터리/충전기</label>
+                        <label style="display: flex; align-items: flex-start; gap: 6px; line-height: 1.35;"><span style="font-size: 14px;">☐</span> 상비약(멀미·소화·해열) · 개인 위생용품</label>
+                    </div>
+                </div>
+
+                <div style="margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 16px; padding: 10px 14px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; page-break-inside: avoid;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=90x90&amp;data=https://indadady.github.io/20270306_hainan/" alt="스마트 가이드북 QR" style="width: 70px; height: 70px; border: 1px solid #cbd5e1; border-radius: 4px;">
+                    <div style="font-size: 11.5px; color: #334155; line-height: 1.5;">
+                        <strong style="color: #004098; font-size: 12.5px;">📱 스마트 가이드북 바로가기</strong><br>
+                        QR코드를 스캔하시면 실시간 날씨, 환율, 현지 회화,<br>
+                        상세 지도 등 더 풍부한 여행 정보를 확인하실 수 있습니다.<br>
+                        <span style="color: #64748b; font-size: 10.5px;">https://indadady.github.io/20270306_hainan/</span>
+                    </div>
+                </div>
+
+                <div class="print-footer-box">
+                    <div class="print-manager-info">
+                        <div class="names">담당 및 진행 : 대표 이재명 010-9443-7881<br>현지 가이드 : 미정 (확정 후 안내)</div>
+                        <div style="font-size: 11px; color:#64748b; margin-top: 4px;">[System Powered by TOURMAKER]</div>
+                    </div>
+                </div>
             </div>
         </div>
+
 
         <!-- Hero -->
         <section id="home" class="hero-bg min-h-[75vh] flex items-center justify-center text-center px-4 relative">
@@ -641,6 +704,7 @@
         </section>
 
         <!-- Hotel -->
+        
         <section id="hotel" class="py-16 bg-white border-t border-slate-200">
             <div class="container mx-auto px-4 max-w-5xl">
                 <div class="text-center mb-12">
@@ -649,31 +713,34 @@
                     <p class="text-sm text-slate-500 mt-2">리조트는 객실 상황에 따라 동급으로 변경될 수 있습니다. (안내 초안)</p>
                 </div>
                 <div class="grid lg:grid-cols-2 gap-6">
-                    <div class="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-200">
-                        <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">1박 · 해구</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-1">하이커우 풀만 호텔 또는 동급</h3>
-                        <p class="text-sm text-slate-500 mb-4">Pullman Haikou (or similar)</p>
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li class="flex gap-2"><i class="fa-solid fa-plane-arrival text-tm mt-1"></i> 새벽 도착 일정을 고려한 해구 리조트 투숙</li>
-                            <li class="flex gap-2"><i class="fa-solid fa-train text-emerald-500 mt-1"></i> 다음날 삼아행 열차 이동에 유리한 동선</li>
-                        </ul>
-                    </div>
-                    <div class="bg-slate-50 p-6 md:p-8 rounded-3xl border border-slate-200 overflow-hidden">
-                        <div class="rounded-2xl overflow-hidden shadow-md mb-5 -mx-1">
-                            <img src="assets/images/hotel.jpg" alt="삼아 리조트 인근 해안 경관" class="w-full h-48 object-cover">
+                    <div class="bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden">
+                        <img src="assets/images/hotel-pullman.jpg" alt="하이커우 풀만 호텔 전경" class="w-full h-52 object-cover">
+                        <div class="p-6 md:p-8">
+                            <span class="bg-sky-100 text-sky-800 text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">1박 · 해구</span>
+                            <h3 class="text-xl font-bold text-slate-800 mb-1">하이커우 풀만 호텔 또는 동급</h3>
+                            <p class="text-sm text-slate-500 mb-4">Pullman Haikou</p>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li class="flex gap-2"><i class="fa-solid fa-plane-arrival text-tm mt-1"></i> 새벽 도착 일정을 고려한 해구 리조트 투숙</li>
+                                <li class="flex gap-2"><i class="fa-solid fa-train text-emerald-500 mt-1"></i> 다음날 삼아행 열차 이동에 유리한 동선</li>
+                            </ul>
                         </div>
-                        <span class="bg-blue-100 text-tm text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">3박 · 삼아</span>
-                        <h3 class="text-xl font-bold text-slate-800 mb-1">삼아만 맹글로브 리조트 퀸스테이다워 또는 동급</h3>
-                        <p class="text-sm text-slate-500 mb-4">Sanya Bay Mangrove Tree Resort · Queenstay Tower (or similar)</p>
-                        <ul class="text-sm text-slate-600 space-y-2">
-                            <li class="flex gap-2"><i class="fa-solid fa-umbrella-beach text-amber-500 mt-1"></i> 삼아만 리조트 체류로 오전 휴양·오후 관광 밸런스</li>
-                            <li class="flex gap-2"><i class="fa-solid fa-water-ladder text-sky-500 mt-1"></i> 부대시설 자유시간으로 부부 맞춤 휴식</li>
-                        </ul>
-                        <p class="text-[11px] text-slate-400 mt-4">※ 상단 이미지는 삼아 해안 분위기 참고용이며, 호텔 공식 전경은 확정 후 교체됩니다.</p>
+                    </div>
+                    <div class="bg-slate-50 rounded-3xl border border-slate-200 overflow-hidden">
+                        <img src="assets/images/hotel-mangrove.jpg" alt="삼아만 맹글로브 리조트 전경" class="w-full h-52 object-cover" onerror="this.src='assets/images/hotel.jpg'">
+                        <div class="p-6 md:p-8">
+                            <span class="bg-blue-100 text-tm text-xs font-bold px-3 py-1 rounded-full mb-3 inline-block">3박 · 삼아</span>
+                            <h3 class="text-xl font-bold text-slate-800 mb-1">삼아만 맹글로브 리조트 퀸스테이다워 또는 동급</h3>
+                            <p class="text-sm text-slate-500 mb-4">Mangrove Tree Resort World Sanya Bay · Queenstay / Queen Palm Tower</p>
+                            <ul class="text-sm text-slate-600 space-y-2">
+                                <li class="flex gap-2"><i class="fa-solid fa-umbrella-beach text-amber-500 mt-1"></i> 삼아만 리조트 체류로 오전 휴양·오후 관광 밸런스</li>
+                                <li class="flex gap-2"><i class="fa-solid fa-water-ladder text-sky-500 mt-1"></i> 부대시설 자유시간으로 부부 맞춤 휴식</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+
 
         <!-- Smart info -->
         <section id="smart-info" class="py-16 bg-slate-50 border-t border-slate-200">
@@ -819,7 +886,7 @@
                         <h4 class="font-bold text-xl mb-2">투어메이커 상황실</h4>
                         <p class="text-xs text-blue-200 mb-6">VIP 고객 전담 매니저 및 현지 가이드 연결</p>
                         <div class="space-y-4">
-                            <div class="contact-row"><span class="contact-badge bg-white/20 text-white">한국총괄</span><div><p class="font-bold">정두영 이사</p><a href="tel:01038411634" class="text-sm font-bold text-blue-200 hover:text-white">010-3841-1634</a></div></div>
+                            <div class="contact-row"><span class="contact-badge bg-white/20 text-white">한국담당</span><div><p class="font-bold">이재명 대표</p><a href="tel:01094437881" class="text-sm font-bold text-blue-200 hover:text-white">010-9443-7881</a></div></div>
                             <div class="contact-row"><span class="contact-badge bg-white/20 text-white">현지담당</span><div><p class="font-bold">현지 가이드</p><p class="text-sm text-blue-200">미정</p></div></div>
                         </div>
                     </div>
@@ -1130,7 +1197,7 @@
         }
 
         const C_KEY = 'tm_hn20270306_chk';
-        const C_ITEMS = ['여권 (유효기간 6개월 이상 필수)','편한 운동화 · 샌들','수영복 / 비치웨어','자외선 차단제 · 모자 · 선글라스','개인 상비약 및 멀미약','위안화(CNY) 환전 및 해외겸용 카드','접이식 우산 · 얇은 겉옷'];
+        const C_ITEMS = ['여권 (유효기간 6개월 이상) + 사본/사진','항공권 E-Ticket & 일정표 (인쇄/캡처)','편한 운동화 · 샌들 · 수영복','자외선 차단제 · 모자 · 선글라스','얇은 겉옷 · 접이식 우산','위안화(CNY) 일부 + 해외겸용 카드','보조배터리/충전기','상비약(멀미·소화·해열) · 개인 위생용품'];
         function renderChecklist() {
             const c = document.getElementById('checklist-container'), saved = JSON.parse(localStorage.getItem(C_KEY) || '{}');
             c.innerHTML = C_ITEMS.map((l,i) => {
